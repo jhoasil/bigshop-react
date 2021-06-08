@@ -11,6 +11,8 @@ import {
 } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
+import CartWidget from "./CartWidget";
+
 
 const useStyles = makeStyles({
   navbarDisplayFlex: {
@@ -46,8 +48,7 @@ const Navbar = () => {
             <Typography variant="h6" >
                 BigShop
             </Typography>
-          </IconButton>
-          
+          </IconButton>       
           <List
             component="nav"
             aria-labelledby="main navigation"
@@ -61,6 +62,7 @@ const Navbar = () => {
               </a>
             ))}
           </List>
+          <CartWidget/>
         </Container>
       </Toolbar>
     </AppBar>
