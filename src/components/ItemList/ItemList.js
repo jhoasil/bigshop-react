@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import Item from '../Item/Item';
+import React, { useState, useEffect } from "react";
+import Item from "../Item/Item";
 
-const ItemList = ({ items }) => {
+import products from "../../data/product-data";
 
-    useEffect(() => {
-        console.log(items);
-    }, []);
+const ItemList = () => {
+    console.log(products);
 
-    return 
-    <div>
-        <div >
-            <div >
-                <h1>{titulo}</h1>
-            </div>
-            <div >
-                {items.map(item => <Item key={item.id} id={item.id} name={item.name} photo={item.photo} price={item.price}></Item>)}
-            </div>
+    useEffect(() => {}, []);
+
+    return (
+        <div>
+            {products.map((product) => (
+                <Item key={product.id} product={product} />
+            ))}
         </div>
-    </div>
-}
-
+    );
+};
 
 export default ItemList;

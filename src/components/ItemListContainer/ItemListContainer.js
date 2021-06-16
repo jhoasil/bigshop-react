@@ -7,8 +7,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const ItemListContainer = () => {  
     let available = 5;
+    const items = [];
     const useStyles = makeStyles({});
-    const itemCollection = db.collection("items");
     const handleAdd = (counter) => {
       return (evt) => {
           evt.stopPropagation();
@@ -19,7 +19,7 @@ const ItemListContainer = () => {
       <div>
         <ItemCount onAdd={handleAdd} {...{ available }} initial={1} />
         <div >
-          <ItemList {...{ items }}></ItemList>
+          <ItemList/>
         </div>
       </div>
       );
