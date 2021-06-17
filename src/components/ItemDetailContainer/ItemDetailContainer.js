@@ -1,10 +1,11 @@
-
-import ItemDetail from "./ItemDetail";
+import ItemDetail from "../ItemDetail/ItemDetail";
+import product from "../../data/product-data";
 
 const ItemDetailContainer = () => {
+    console.log(product);
     return (
         <div>
-            <ItemDetail />
+            <ItemDetail product={product}/>
         </div>
     );
 };

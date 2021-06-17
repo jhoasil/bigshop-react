@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Item from "../Item/Item";
 
-import products from "../../data/product-data";
+import products from "../../data/products-data";
 
 const ItemList = () => {
     console.log(products);
@@ -11,7 +11,7 @@ const ItemList = () => {
     return (
         <div>
             {products.map((product) => (
-                <Item key={product.id} product={product} />
+                <Item product={product} />
             ))}
         </div>
     );
