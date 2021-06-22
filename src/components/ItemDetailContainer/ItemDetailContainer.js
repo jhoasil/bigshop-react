@@ -1,11 +1,15 @@
 import ItemDetail from "../ItemDetail/ItemDetail";
-import product from "../../data/product-data";
+import products from "../../data/products-data";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
-    console.log(product);
+    const { itemId } = useParams();
     return (
         <div>
-            <ItemDetail product={product}/>
+            {products.map((product) => {
+                if (product.id == itemId)
+                    return <ItemDetail product={product} />;
+            })}
         </div>
     );
 };

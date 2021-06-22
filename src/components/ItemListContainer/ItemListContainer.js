@@ -3,21 +3,18 @@ import ItemCount from "../ItemCount/ItemCount";
 import ItemList from "../ItemList/ItemList";
 
 import { makeStyles } from "@material-ui/core/styles";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
-    let available = 5;
+    
+    const { categoryId = "all" } = useParams();
     const useStyles = makeStyles({});
-    const handleAdd = (counter) => {
-        return (evt) => {
-            evt.stopPropagation();
-        };
-    };
+    console.log(categoryId);
 
     return (
         <div>
-            <ItemCount onAdd={handleAdd} {...{ available }} initial={1} />
             <div>
-                <ItemList />
+                <ItemList categoryId={categoryId} />
             </div>
         </div>
     );

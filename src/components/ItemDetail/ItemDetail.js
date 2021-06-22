@@ -1,11 +1,9 @@
-import product from "../../data/product-data";
-
 function ItemDetail({
     product: { id, title, productType, pictureUrl, price, description },
 }) {
     return (
         <div>
-            <h6>{title}</h6>
+            <h5>{title}</h5>
             <hr />
             <p>{productType}</p>
             <div>$ {price}</div>
