@@ -2,11 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Natigation site
+![Alt Text](https://github.com/jhoasil/bigshop-react/blob/69ca81250749848336f59cfc4df9993d19c99f63/src/assets/Peek%2022-06-2021%2013-02.gif)
+
 ## Available Scripts
 
 In the project directory, you can run:
-
-### Natigation site
 
 ### `npm start`
 
