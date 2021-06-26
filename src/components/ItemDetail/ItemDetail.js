@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
 function ItemDetail({
     product: { id, title, productType, pictureUrl, price, description },
@@ -29,13 +30,22 @@ function ItemDetail({
             <div>
                 <p>{description}</p>
             </div>
+            {cart == 0 && (
+                <ItemCount
+                    onAdd={handleAdd}
+                    {...{ available }}
+                    {...{ cart }}
+                    initial={1}
+                />
+            )}
 
-            <ItemCount
-                onAdd={handleAdd}
-                {...{ available }}
-                {...{ cart }}
-                initial={1}
-            />
+            {cart > 0 && (
+                <div>
+                    <Link to="/cart">
+                        <button>Terminar Compra</button>
+                    </Link>
+                </div>
+            )}
         </div>
     );
 }

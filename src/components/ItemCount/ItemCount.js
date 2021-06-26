@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 function ItemCount({ onAdd, initial, available, cart, setCart }) {
     const [items, setItems] = useState(initial);
@@ -16,22 +15,13 @@ function ItemCount({ onAdd, initial, available, cart, setCart }) {
 
     return (
         <div>
-            {cart == 0 && (
-                <div>
-                    <button onClick={handleClick(false)}>-</button>
-                    <p className="cantItems">{items}</p>
-                    <button onClick={handleClick(true)}>+</button>
-
-                    <button onClick={onAdd(items)}>Agregar producto</button>
-                </div>
-            )}
-            {cart > 0 && (
-                <div>
-                    <Link to="/cart">
-                        <button onClick={onAdd(items)}>Terminar Compra</button>
-                    </Link>
-                </div>
-            )}
+            <div>
+                <button onClick={handleClick(false)}>-</button>
+                <p className="cantItems">{items}</p>
+                <button onClick={handleClick(true)}>+</button>
+                <br/>
+                <button onClick={onAdd(items)}>Agregar producto</button>
+            </div>
         </div>
     );
 }
