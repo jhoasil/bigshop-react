@@ -7,11 +7,12 @@ function ItemCount({ onAdd, initial, available, cart, setCart }) {
         return () => {
             if (op && items < available) {
                 setItems(items + 1);
-            } else if (!op && items > 1) {
+            }
+            else if (!op && items > 1) {
                 setItems(items - 1);
             }
-        };
-    };
+        }
+    }
 
     return (
         <div>
@@ -19,7 +20,7 @@ function ItemCount({ onAdd, initial, available, cart, setCart }) {
                 <button onClick={handleClick(false)}>-</button>
                 <p className="cantItems">{items}</p>
                 <button onClick={handleClick(true)}>+</button>
-                <br/>
+                <br />
                 <button onClick={onAdd(items)}>Agregar producto</button>
             </div>
         </div>

@@ -1,36 +1,41 @@
 import React, { useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
+import { useCartContext, CartContext } from "../../context/CartContext";
 
-function ItemDetail({
-    product: { id, title, productType, pictureUrl, price, description },
-}) {
+function ItemDetail({ product}) {
     let available = 5;
+    console.log(product)
 
-    const [cart, setCart] = useState(0);
-
+    const { addItemCart, cart, clearCart } = useCartContext();
+    console.log(cart);
     const handleAdd = (counter) => {
         return (evt) => {
-            setCart(counter);
             evt.stopPropagation();
+
+            console.log(counter);
+            if (counter <= available && counter > 0) {
+                addItemCart(product, counter);
+            }
         };
     };
 
     return (
         <div>
-            <h5>{title}</h5>
+            <h5>{product.title}</h5>
             <hr />
-            <p>{productType}</p>
-            <div>$ {price}</div>
+            <p>{product.productType}</p>
+            <div>$ {product.price}</div>
             <hr />
             <div>
-                <img src={pictureUrl} height={500} width={500} />
+                <img src={product.pictureUrl} height={500} width={500} />
             </div>
             <hr />
             <div>
-                <p>{description}</p>
+                <p>{product.description}</p>
             </div>
-            {cart == 0 && (
+
+            {cart.length == 0 && (
                 <ItemCount
                     onAdd={handleAdd}
                     {...{ available }}
@@ -39,11 +44,12 @@ function ItemDetail({
                 />
             )}
 
-            {cart > 0 && (
+            {cart.length > 0 && (
                 <div>
                     <Link to="/cart">
                         <button>Terminar Compra</button>
                     </Link>
+                    <button onClick={clearCart}>Vaciar Carrito</button>
                 </div>
             )}
         </div>

@@ -25,7 +25,7 @@ const products = [
     },
     {
         id: 3,
-        namtitlee: "Coffee Maker",
+        title: "Coffee Maker",
         category: 2,
         productType: "L14dc19 Black Filter Coffee Machine",
         price: 28,
