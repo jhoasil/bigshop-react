@@ -35,7 +35,7 @@ function ItemDetail({ product}) {
                 <p>{product.description}</p>
             </div>
 
-            {cart.length == 0 && (
+            {cart.length >= 0 && (
                 <ItemCount
                     onAdd={handleAdd}
                     {...{ available }}
@@ -43,13 +43,12 @@ function ItemDetail({ product}) {
                     initial={1}
                 />
             )}
-
+            <br/>
             {cart.length > 0 && (
                 <div>
                     <Link to="/cart">
                         <button>Terminar Compra</button>
                     </Link>
-                    <button onClick={clearCart}>Vaciar Carrito</button>
                 </div>
             )}
         </div>
