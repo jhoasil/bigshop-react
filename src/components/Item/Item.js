@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 export default function Item({
     key,
-    product: { id, title, pictureUrl, price, description },
+    product,
+    product: { id, title, picture_url, price, description },
 }) {
-
+    console.log(product);
     return (
         <div>
             <div>
-                <img src={pictureUrl} alt={title} width="250" height="250" />
+                <img src={picture_url} alt={title} width="250" height="250" />
             </div>
             <Link to={"/item/" + id}>
                 <h2>{title}</h2>

@@ -4,29 +4,57 @@ import ItemList from "../ItemList/ItemList";
 import products from "../../data/products-data";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
+import { getFirestore } from "../../firebase/firebase";
 
 const ItemListContainer = () => {
-    const { categoryId = "all" } = useParams();
     const useStyles = makeStyles({});
+    const { categoryId = "all" } = useParams();
+    const [items, setItems] = useState([]);
     console.log(categoryId);
-    let data = [];
+    
+    useEffect(() => {
+        const db = getFirestore();
+        const itemCollection = db.collection("item");
+        console.log(categoryId);
+        if (categoryId == "all") {
+            itemCollection.get().then((querySnapshot) => {
+                let data = [];
+                if (querySnapshot.size === 0) {
+                    console.log("no results");
+                } else {
+                    console.log(querySnapshot.docs.map((doc) => doc.data()));
+                    querySnapshot.docs.map((doc) =>
+                        data.push({ id: doc.id, ...doc.data() })
+                    );
+                    setItems(data);
+                }
+            });
 
-    if (categoryId == "all") {
-        data = products;
-    } else if (true) {
-        products.map((product) => {
-            if (product.category == categoryId) {
-                data.push(product);
-            }
-        });
-    }
-
-    console.log(data);
+            console.log(items);
+        } else {
+            let categoryItems = itemCollection.where(
+                "category",
+                "==",
+                categoryId
+            );
+            categoryItems.get().then((querySnapshot) => {
+                let data = [];
+                if (querySnapshot.size === 0) {
+                    console.log("no results");
+                } else {
+                    querySnapshot.docs.map((doc) =>
+                        data.push({ id: doc.id, ...doc.data() })
+                    );
+                    setItems(data);
+                }
+            });
+        }
+    }, [categoryId]);
 
     return (
         <div>
             <div>
-                <ItemList categoryId={categoryId} products={data} />
+                <ItemList categoryId={categoryId} products={items} />
             </div>
         </div>
     );

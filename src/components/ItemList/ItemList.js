@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Item from "../Item/Item";
 
 const ItemList = ({ products }) => {
+    console.log("hola")
     console.log(products);
 
     useEffect(() => {}, []);
